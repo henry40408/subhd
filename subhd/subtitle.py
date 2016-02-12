@@ -49,7 +49,9 @@ class SubHDSubtitle(SubHDBase):
         if handler:
             return handler.extract_subtitles()
         else:
-            raise SubHDDecompressException()
+            message = "Archive type {0} is not yet " \
+                      "supported".format(self.archive_type)
+            raise SubHDDecompressException(message)
 
     def translate_subtitles(self):
         subtitles = self.extract_subtitles()
