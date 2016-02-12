@@ -1,7 +1,7 @@
+import re
 from io import BytesIO
 
 import opencc
-import re
 import requests
 
 from subhd.archive_handlers import RarHandler
@@ -57,11 +57,14 @@ class SubHDSubtitle(SubHDBase):
     def translate_subtitles(self):
         subtitles = self.extract_subtitles()
         for index, subtitle in enumerate(subtitles):
-            content = subtitle.content.decode("gbk")
+            content = subtitle.content
 
             locale = subtitle.filename.split(".")[-2]
             if re.match(r"chs", locale):
+                content = content.decode("gbk")
                 content = opencc.convert(content, config="s2t.json")
+            else:
+                content = content.decode("big5")
 
             subtitles[index] = SubtitleFile(filename=subtitle.filename,
                                             content=content)
