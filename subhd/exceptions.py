@@ -4,3 +4,7 @@ class SubHDBaseException(Exception):
 
 class SubHDDownloadException(SubHDBaseException):
     pass
+
+
+class SubHDDecompressException(SubHDBaseException):
+    pass

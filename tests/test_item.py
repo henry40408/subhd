@@ -28,6 +28,19 @@ class TestItem(unittest.TestCase):
         self.item.id = -1
         self.assertRaises(SubHDDownloadException, self.item.get_file_url)
 
+    def test_download_archive(self):
+        with self.item.download_archive() as archive:
+            self.assertGreater(len(archive.read()), 0)
+
+    def test_extract_subtitles(self):
+        self.assertGreater(len(self.item.extract_subtitles()), 0)
+
+    def test_translate_subtitles(self):
+        subtitles = self.item.translate_subtitles()
+        self.assertGreater(len(subtitles), 0)
+
+        subtitle = subtitles[0]
+        self.assertIn(self.KEYWORD, subtitle)
 
 if __name__ == "__main__":
     unittest.main()
