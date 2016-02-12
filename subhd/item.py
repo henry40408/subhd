@@ -53,5 +53,6 @@ class SubHDItem(SubHDBase):
     def translate_subtitles(self):
         subtitles = self.extract_subtitles()
         for index, subtitle_file in enumerate(subtitles):
-            subtitles[index] = opencc.convert(subtitle_file.content, config="s2t.json")
+            content = subtitle_file.content.decode("gbk")
+            subtitles[index] = opencc.convert(content, config="s2t.json")
         return subtitles

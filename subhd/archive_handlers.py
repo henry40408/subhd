@@ -10,4 +10,4 @@ class RarHandler(IArchiveHandler):
         for file_info in archive.infolist():
             file = archive.open(file_info.filename)
             yield SubtitleFile(filename=file_info.filename,
-                               content=file.read().decode("gbk"))
+                               content=file.read())
