@@ -1,9 +1,10 @@
 import argparse
+import sys
 
 import inflect
+from tabulate import tabulate
 
 from subhd.search import SubHDSearch
-from subhd.utils import truncate
 
 p = inflect.engine()
 
@@ -31,11 +32,18 @@ class SubHDApp(object):
         return ".".join([self.filename] + locale_and_ext)
 
     def choose_subtitle(self):
-        self.search = SubHDSearch(keyword=self.filename)
-        for index, entry in enumerate(self.search.entries()):
-            print("{0:02d}) {1}".format(index + 1, truncate(entry.name, 73)))
-        choice = int(input("Number of subtitle to download: "))
-        return choice
+        try:
+            self.search = SubHDSearch(keyword=self.filename)
+
+            table = [[i + 1, e.name]
+                     for i, e in enumerate(self.search.entries())]
+            table = [["#", "Name"]] + table
+            print(tabulate(table, headers="firstrow"))
+
+            return int(input("Number of subtitle to download (Ctrl+D to abort): "))
+        except EOFError as e:
+            print("Aborted.")
+            sys.exit(0)
 
     def main(self):
         choice = self.choose_subtitle()
@@ -43,10 +51,9 @@ class SubHDApp(object):
 
         subtitles = subtitle.translate_subtitles()
         for subtitle in subtitles:
-            new_filename = truncate(self.subtitle_filename(subtitle))
+            new_filename = self.subtitle_filename(subtitle)
             save_subtitle(subtitle, new_filename)
-            print("{0} => {1}".format(truncate(subtitle.filename),
-                                      new_filename))
+            print("{0} => {1}".format(subtitle.filename, new_filename))
 
         plural = p.plural("subtitle", len(subtitles))
         print("{0} {1} downloaded.".format(len(subtitles), plural))
