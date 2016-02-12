@@ -12,7 +12,7 @@ CHUNK_SIZE = 2048
 URL_PATTERN = "http://subhd.com/a/{0}"
 
 
-class SubHDItem(SubHDBase):
+class SubHDSubtitle(SubHDBase):
     def __init__(self, id):
         self.id = int(id)
         self.archive_type = None

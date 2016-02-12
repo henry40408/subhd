@@ -4,15 +4,15 @@ import opencc
 import requests
 
 from subhd.exceptions import SubHDDownloadException
-from subhd.item import SubHDItem
+from subhd.subtitle import SubHDSubtitle
 
 
-class TestItem(unittest.TestCase):
+class TestSubtitle(unittest.TestCase):
     KEYWORD = u"普羅米修斯"
     ID = 309312
 
     def setUp(self):
-        self.item = SubHDItem(self.ID)
+        self.item = SubHDSubtitle(self.ID)
 
     def test_parse_content(self):
         document = self.item.parse_content()
