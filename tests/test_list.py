@@ -1,14 +1,7 @@
 import unittest
 
 from subhd.exceptions import SubHDDownloadException
-from subhd.interfaces import ISubHDBase
 from subhd.list import SubHDList
-
-
-class TestISubHDBase(unittest.TestCase):
-    def test_make_url_not_implemented(self):
-        subhd = ISubHDBase()
-        self.assertRaises(NotImplementedError, subhd.make_url)
 
 
 class TestSubHDList(unittest.TestCase):
