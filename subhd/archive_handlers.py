@@ -1,7 +1,7 @@
 import rarfile
 
 from subhd.interfaces import IArchiveHandler
-from subhd.item import SubtitleFile
+from subhd.utils import SubtitleFile
 
 
 class RarHandler(IArchiveHandler):

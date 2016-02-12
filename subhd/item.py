@@ -1,4 +1,3 @@
-from collections import namedtuple
 from io import BytesIO
 
 import opencc
@@ -7,8 +6,6 @@ import requests
 from subhd.archive_handlers import RarHandler
 from subhd.exceptions import SubHDDownloadException, SubHDDecompressException
 from subhd.interfaces import ISubHDBase
-
-SubtitleFile = namedtuple("SubtitleFile", ["filename", "content"])
 
 AJAX_ENDPOINT = "http://subhd.com/ajax/down_ajax"
 CHUNK_SIZE = 2048
