@@ -1,0 +1,7 @@
+#!/usr/bin/env python3
+
+from subhd.main import SubHDApp
+
+if __name__ == "__main__":
+    app = SubHDApp()
+    app.main()

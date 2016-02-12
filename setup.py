@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="subhd",
-    version="1.0.1",
+    version="1.0.2",
     description="Yet another SubHD.com download client",
     author="Heng-Yi Wu",
     author_email="henry40408@gmail.com",
@@ -14,5 +14,8 @@ setup(
         "rarfile==2.7",
         "requests==2.9.1",
         "tabulate==0.7.5"
+    ],
+    scripts=[
+        "bin/subhd"
     ]
 )
