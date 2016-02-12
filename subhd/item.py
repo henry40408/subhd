@@ -5,14 +5,14 @@ import requests
 
 from subhd.archive_handlers import RarHandler
 from subhd.exceptions import SubHDDownloadException, SubHDDecompressException
-from subhd.interfaces import ISubHDBase
+from subhd.interfaces import SubHDBase
 
 AJAX_ENDPOINT = "http://subhd.com/ajax/down_ajax"
 CHUNK_SIZE = 2048
 URL_PATTERN = "http://subhd.com/a/{0}"
 
 
-class SubHDItem(ISubHDBase):
+class SubHDItem(SubHDBase):
     def __init__(self, id):
         self.id = int(id)
         self.archive_type = None

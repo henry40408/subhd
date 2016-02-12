@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 from subhd.exceptions import SubHDDownloadException
 
 
-class ISubHDBase(object):
+class SubHDBase(object):
     def make_url(self):
         raise NotImplementedError()
 

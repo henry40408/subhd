@@ -1,11 +1,11 @@
 import unittest
 
-from subhd.interfaces import ISubHDBase
+from subhd.interfaces import SubHDBase
 
 
 class TestISubHDBase(unittest.TestCase):
     def test_make_url_not_implemented(self):
-        subhd = ISubHDBase()
+        subhd = SubHDBase()
         self.assertRaises(NotImplementedError, subhd.make_url)
 
 

@@ -1,9 +1,9 @@
-from subhd.interfaces import ISubHDBase
+from subhd.interfaces import SubHDBase
 
 URL_PATTERN = "http://subhd.com/search/{0}"
 
 
-class SubHDList(ISubHDBase):
+class SubHDList(SubHDBase):
     def __init__(self, *, keyword):
         self.keyword = keyword
 
