@@ -25,6 +25,10 @@ class TestSubHDList(unittest.TestCase):
         self.list.keyword = u"foo/bar"
         self.assertRaises(SubHDDownloadException, self.list.get_content)
 
+    def test_entries(self):
+        for entry in self.list.entries():
+            self.assertRegex(entry["href"], r"^/a/\d+$")
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -9,3 +9,7 @@ class SubHDList(ISubHDBase):
 
     def make_url(self):
         return self.URL_PATTERN.format(self.keyword)
+
+    def entries(self):
+        for entry in self.parse_content().select(".d_title > a"):
+            yield entry
