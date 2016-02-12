@@ -5,7 +5,7 @@ import requests
 
 from subhd.archive_handlers import RarHandler
 from subhd.exceptions import SubHDDownloadException, SubHDDecompressException
-from subhd.interfaces import SubHDBase
+from subhd.utils import SubHDBase, SubtitleFile
 
 AJAX_ENDPOINT = "http://subhd.com/ajax/down_ajax"
 CHUNK_SIZE = 2048
@@ -14,6 +14,7 @@ URL_PATTERN = "http://subhd.com/a/{0}"
 
 class SubHDSubtitle(SubHDBase):
     def __init__(self, id):
+        super(SubHDSubtitle, self).__init__()
         self.id = int(id)
         self.archive_type = None
 
@@ -52,7 +53,9 @@ class SubHDSubtitle(SubHDBase):
 
     def translate_subtitles(self):
         subtitles = self.extract_subtitles()
-        for index, subtitle_file in enumerate(subtitles):
-            content = subtitle_file.content.decode("gbk")
-            subtitles[index] = opencc.convert(content, config="s2t.json")
+        for index, subtitle in enumerate(subtitles):
+            content = subtitle.content.decode("gbk")
+            content = opencc.convert(content, config="s2t.json")
+            subtitles[index] = SubtitleFile(filename=subtitle.filename,
+                                            content=content)
         return subtitles

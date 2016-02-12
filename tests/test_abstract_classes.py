@@ -1,6 +1,6 @@
 import unittest
 
-from subhd.interfaces import SubHDBase
+from subhd.utils import SubHDBase
 
 
 class TestSubHDBase(unittest.TestCase):

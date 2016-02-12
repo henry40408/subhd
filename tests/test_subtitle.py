@@ -36,11 +36,11 @@ class TestSubtitle(unittest.TestCase):
         self.assertGreater(len(self.item.extract_subtitles()), 0)
 
     def test_translate_subtitles(self):
-        subtitles = self.item.translate_subtitles()
-        self.assertGreater(len(subtitles), 0)
+        subtitle_files = self.item.translate_subtitles()
+        self.assertGreater(len(subtitle_files), 0)
 
-        subtitle = subtitles[0]
-        self.assertIn(self.KEYWORD, subtitle)
+        subtitle_file = subtitle_files[0]
+        self.assertIn(self.KEYWORD, subtitle_file.content)
 
 if __name__ == "__main__":
     unittest.main()

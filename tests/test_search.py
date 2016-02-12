@@ -20,7 +20,7 @@ class TestSearch(unittest.TestCase):
 
     def test_entries(self):
         for entry in self.search.entries():
-            self.assertRegex(entry["href"], r"^/a/\d+$")
+            self.assertRegex(entry.path, r"^/a/\d+$")
 
 
 if __name__ == "__main__":
