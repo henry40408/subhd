@@ -1,4 +1,5 @@
 beautifulsoup4==4.4.1
+inflect==0.2.5
 OpenCC==0.2
 rarfile==2.7
 requests==2.9.1

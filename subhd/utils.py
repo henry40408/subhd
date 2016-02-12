@@ -9,6 +9,12 @@ SubtitleFile = namedtuple("SubtitleFile", ["filename", "content"])
 Entry = namedtuple("Entry", ["name", "path"])
 
 
+def truncate(long_string, length=None):
+    if not length:
+        length = 30
+    return long_string[:length] + (long_string[length:] and "...")
+
+
 class SubHDBase(object):
     def __init__(self):
         self.content = None
