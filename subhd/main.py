@@ -1,4 +1,5 @@
 import argparse
+import re
 import sys
 
 import inflect
@@ -28,8 +29,15 @@ class SubHDApp(object):
         self.filename = args.filename
 
     def subtitle_filename(self, subtitle):
-        locale_and_ext = subtitle.filename.split(".")[-2:]
-        return ".".join([self.filename] + locale_and_ext)
+        ext = subtitle.filename.split(".")[-1]
+
+        locale = subtitle.filename.split(".")[-2]
+        if re.match(r"(chs|cht)", locale):
+            locale = [locale]
+        else:
+            locale = []
+
+        return ".".join([self.filename] + locale + [ext])
 
     def choose_subtitle(self):
         try:
