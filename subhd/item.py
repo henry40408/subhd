@@ -2,37 +2,13 @@ from collections import namedtuple
 from io import BytesIO
 
 import opencc
-import rarfile
 import requests
 
+from subhd.archive_handlers import RarHandler
 from subhd.exceptions import SubHDDownloadException, SubHDDecompressException
 from subhd.interfaces import ISubHDBase
 
 SubtitleFile = namedtuple("SubtitleFile", ["filename", "content"])
-
-
-class IArchiveHandler(object):
-    def __init__(self, *, archive):
-        self.archive = archive
-
-    def iter_files(self):
-        raise NotImplementedError()
-
-    def extract_subtitles(self):
-        subtitles = []
-        for subtitle_file in self.iter_files():
-            subtitles.append(subtitle_file)
-        return subtitles
-
-
-class RarHandler(IArchiveHandler):
-    def iter_files(self):
-        archive = rarfile.RarFile(self.archive)
-        for file_info in archive.infolist():
-            file = archive.open(file_info.filename)
-            yield SubtitleFile(filename=file_info.filename,
-                               content=file.read().decode("gbk"))
-
 
 AJAX_ENDPOINT = "http://subhd.com/ajax/down_ajax"
 CHUNK_SIZE = 2048
