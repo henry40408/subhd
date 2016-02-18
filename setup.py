@@ -4,6 +4,7 @@ setup(
     name="subhd",
     version="1.0.4",
     description="Yet another SubHD.com download client",
+    long_description=open("README.md").read(),
     author="Heng-Yi Wu",
     author_email="henry40408@gmail.com",
     url="https://github.com/henry40408/subhd",
