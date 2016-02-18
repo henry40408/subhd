@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="subhd",
-    version="1.0.5",
+    version="1.0.6",
     description="Yet another SubHD.com download client",
     long_description=open("README.md").read(),
     author="Heng-Yi Wu",

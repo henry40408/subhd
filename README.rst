@@ -1,14 +1,21 @@
-# subhd
+subhd
+=====
 
-Yet another [SubHD.com](http://subhd.com) client.
+Yet another `SubHD.com <http://subhd.com>`__ client.
 
-## Install
+Install
+-------
+
+::
 
     $ pip install subhd
 
 That's all.
 
-## Usage
+Usage
+-----
+
+::
 
     $ subhd Prometheus
       #  Name
@@ -40,6 +47,7 @@ That's all.
 
 Then you will get subtitle downloaded in the current directory.
 
-## License
+License
+-------
 
 MIT
