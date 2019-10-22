@@ -13,7 +13,7 @@ setup(
         "inflect==0.2.5",
         "OpenCC==0.2",
         "rarfile==2.7",
-        "requests==2.9.1",
+        "requests==2.20.0",
         "tabulate==0.7.5"
     ],
     scripts=[
